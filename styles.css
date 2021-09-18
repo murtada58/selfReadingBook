@@ -1,7 +1,24 @@
+div {
+    display: inline-block;
+}
 #text {
     display: inline-block;
-    background: linear-gradient(to right, blue 100%, white 40%);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
+
+#color {
+    color: red;
+}
+
 #start {
     display: none;
+}
+
+.color {
+    color: red;
 }

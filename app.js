@@ -1,8 +1,16 @@
 const text = document.getElementById("text");
-
+const originalText = text.innerText;
+let newText = ""
+for (i = 0; i < originalText.length; i++)
+{
+    newText += `<span data-num="${i}" data-name="span">${originalText[i]}</span>`
+}
+text.innerHTML = newText
+const div = document.getElementById("text_div");
 
 const player = document.getElementById('player');
-const start = document.getElementById("start");
+/*const start = document.getElementById("start");
+
 
 let recorder;
 let started = false;
@@ -39,11 +47,14 @@ const handleSuccess = function(stream) {
 //.then(handleSuccess);
 
 
-text.addEventListener("click", function(evt) {
+div.addEventListener("click", function(evt) {
     const bcr = this.getBoundingClientRect();
-    const percent_clicked = (evt.clientX - bcr.left) / bcr.width;
-    player.currentTime = percent_clicked * player.duration;
-    console.log(text.innerHTML);
+    const percent_clicked_width = (evt.clientX - bcr.left) / bcr.width;
+    const percent_clicked_height = ((evt.clientY - bcr.top) - 22)/ (bcr.height - 44);
+    console.log(Math.round((bcr.height - 43) / 37.685))
+    console.log(percent_clicked_height)
+    player.currentTime = percent_clicked_width * player.duration;
+    console.log("clicked");
     if (player.paused)
     {
         player.play();
@@ -52,13 +63,31 @@ text.addEventListener("click", function(evt) {
     {
         player.pause()
     }
-    player.play();
+    
     console.log(player.paused)
 });
-
-
+*/
+document.addEventListener("click", function(evt){
+    if (evt.target.dataset.name === "span")
+    {
+        player.currentTime = (evt.target.dataset.num  / originalText.length)* player.duration;
+        player.play();
+    }
+})
 
 setInterval(function(){
-    const sectionPlayed = (player.currentTime / player.duration) * 100
-    text.style.background = `linear-gradient(to right, red ${sectionPlayed}%, white ${sectionPlayed}%)`;
+    const sectionPlayed = Math.round((player.currentTime / player.duration) * originalText.length)
+    for (i=0; i < originalText.length; i++)
+    {
+        if (i < sectionPlayed)
+        {
+            text.children[i].classList.add("color")
+        }
+        else
+        {
+            text.children[i].classList.remove("color")
+        }
+    }
 }, 1);
+
+
