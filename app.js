@@ -102,4 +102,4 @@ setInterval(function(){
             text.children[i].classList.remove("color")
         }
     }
-}, 1);
+}, 100);
