@@ -1,0 +1,7 @@
+#text {
+    display: inline-block;
+    background: linear-gradient(to right, blue 100%, white 40%);
+}
+#start {
+    display: none;
+}
