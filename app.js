@@ -74,7 +74,14 @@ document.addEventListener("click", function(evt){
     if (evt.target.dataset.name === "span")
     {
         player.play();
-        if (!firstClick)
+        if (firstClick)
+        {
+            setTimeout(function(){
+                player.currentTime = (evt.target.dataset.num  / originalText.length)* player.duration;
+            } , 500)
+            
+        }
+        else
         {
             player.currentTime = (evt.target.dataset.num  / originalText.length)* player.duration;
         }
