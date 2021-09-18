@@ -4,7 +4,6 @@ const text = document.getElementById("text");
 const player = document.getElementById('player');
 const start = document.getElementById("start");
 
-
 let recorder;
 let started = false;
 let chunks = [];
@@ -36,8 +35,8 @@ const handleSuccess = function(stream) {
     };
 };
 
-navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-.then(handleSuccess);
+//navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+//.then(handleSuccess);
 
 
 text.addEventListener("click", function(evt) {
