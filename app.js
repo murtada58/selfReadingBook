@@ -9,6 +9,7 @@ text.innerHTML = newText
 const div = document.getElementById("text_div");
 
 const player = document.getElementById('player');
+
 /*const start = document.getElementById("start");
 
 
@@ -67,11 +68,17 @@ div.addEventListener("click", function(evt) {
     console.log(player.paused)
 });
 */
+let firstClick = true;
 document.addEventListener("click", function(evt){
+    //player.play();
     if (evt.target.dataset.name === "span")
     {
-        player.currentTime = (evt.target.dataset.num  / originalText.length)* player.duration;
         player.play();
+        if (!firstClick)
+        {
+            player.currentTime = (evt.target.dataset.num  / originalText.length)* player.duration;
+        }
+        firstClick = false;
     }
 })
 
@@ -89,5 +96,3 @@ setInterval(function(){
         }
     }
 }, 1);
-
-
